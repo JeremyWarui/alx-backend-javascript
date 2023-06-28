@@ -3,10 +3,11 @@ export default function guardrail(mathFunction) {
   let answer;
   try {
     answer = mathFunction();
+    queue.push(answer);
   } catch (error) {
-    answer = error.toString();
+    queue.push(error.message);
+  } finally {
+    queue.push('Guardrail was processed');
   }
-  queue.push(answer);
-  queue.push('Guardrail was processed');
   return queue;
 }
