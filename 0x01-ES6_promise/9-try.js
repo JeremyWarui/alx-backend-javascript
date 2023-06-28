@@ -3,7 +3,6 @@ export default function guardrail(mathFunction) {
   let answer;
   try {
     answer = mathFunction();
-    queue.push(answer);
   } catch (error) {
     answer = error.toString();
   }
