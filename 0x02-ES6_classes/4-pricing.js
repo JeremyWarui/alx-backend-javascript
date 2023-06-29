@@ -19,11 +19,11 @@ export default class Pricing {
   }
 
   set currency(newCurr) {
-    if (newCurr instanceof Currency) this._currency(newCurr);
+    if (newCurr instanceof Currency) this._currency = newCurr;
   }
 
   displayFullPrice() {
-    return `${this.amount} ${this.currency.name} ${this.currency.code}`;
+    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
