@@ -16,3 +16,27 @@ const teacher: Teacher = {
 }
 
 console.log(teacher);
+
+interface Directors extends Teacher {
+    numberOfReports: number;
+}
+
+const director1: Directors = {
+    firstName: 'John',
+    lastName: 'Doe',
+    location: 'London',
+    fullTimeEmployee: true,
+    numberOfReports: 17,
+};
+
+console.log(director1);
+
+function printTeacher(firstName: string, lastName: string) {
+    const firstLetter = firstName.substring(0, 1);
+    const name = `${firstLetter}. ${lastName}`;
+    return name;
+}
+
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
+}
