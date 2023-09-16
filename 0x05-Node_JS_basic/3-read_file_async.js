@@ -1,8 +1,7 @@
-/* eslint-disable guard-for-in */
 const fs = require('fs');
 
 function countStudents(path) {
-  const promise = (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
         reject(new Error('Cannot load the database'));
@@ -10,8 +9,12 @@ function countStudents(path) {
         const content = data.toString().split('\n');
         const students = content.filter((item) => item).map((item) => item.split(','));
 
+        const output = [];
+
         const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
         console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
+
+        output.push(`Number of students: ${NUMBER_OF_STUDENTS}`);
 
         const fields = {};
 
@@ -28,12 +31,12 @@ function countStudents(path) {
 
         for (const [key, val] of Object.entries(fields)) {
           console.log(`Number of students in ${key}: ${val.length}. List: ${val.join(', ')}`);
+          output.push(`Number of students in ${key}: ${val.length}. List: ${val.join(', ')}`);
         }
-        resolve();
+        resolve(output);
       }
     });
-  };
-  return new Promise(promise);
+  });
 }
 
 module.exports = countStudents;
