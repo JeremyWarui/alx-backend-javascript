@@ -4,40 +4,33 @@ const fs = require('fs');
 function countStudents(path) {
   const promise = (resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
-      if (err) reject(Error('Cannot load the database'));
+      if (err) {
+        reject(new Error('Cannot load the database'));
+      } else {
+        const content = data.split('\n');
+        const students = content.filter((item) => item).map((item) => item.split(','));
 
-      const messages = [];
-      let message;
+        const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
+        console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
 
-      const content = data.toString().split('\n');
-      let students = content.filter((item) => item);
-      students = students.map((item) => item.split(','));
+        const fields = {};
 
-      const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
-      message = `Number of students: ${NUMBER_OF_STUDENTS}`;
-      console.log(message);
-      messages.push(message);
-
-      const columns = {};
-
-      for (const i in students) {
-        if (i !== 0) {
-          if (!columns[students[i][3]]) columns[students[i][3]] = [];
-          columns[students[i][3]].push(students[i][0]);
+        for (let i = 1; i < students.length; i += 1) {
+          const field = students[i][3];
+          // if field exists add a student to the students array
+          if (fields[field]) {
+            fields[field].push(students[i][0]);
+          } else {
+            // add an array of students
+            fields[field] = [students[i][0]];
+          }
         }
+
+        for (const [key, val] of Object.entries(fields)) {
+          console.log(`Number of students in ${key}: ${val.length}. List: ${val.join(', ')}`);
+        }
+        resolve();
       }
-
-      delete columns.column;
-
-      for (const key of Object.keys(columns)) {
-        message = `Number of students in ${key}: ${
-          columns[key].length
-        }. List: ${columns[key].join(', ')}`;
-
-        console.log(message);
-        messages.push(message);
-      }
-      resolve(messages);
     });
   };
   return new Promise(promise);
