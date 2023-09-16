@@ -1,7 +1,7 @@
 const readDatabase = require('../utils');
 
 class StudentsController {
-  static getAllStudents (request, response, DATABASE) {
+  static getAllStudents(request, response, DATABASE) {
     readDatabase(DATABASE)
       .then((fields) => {
         const output = [];
@@ -20,7 +20,7 @@ class StudentsController {
       });
   }
 
-  static getAllStudentsByMajor (request, response, DATABASE) {
+  static getAllStudentsByMajor(request, response, DATABASE) {
     const { major } = request.params;
     if (major !== 'CS' && major !== 'SWE') {
       response.send(500, 'Major parameter must be CS or SWE');
