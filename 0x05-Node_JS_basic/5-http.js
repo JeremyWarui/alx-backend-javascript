@@ -15,7 +15,8 @@ const app = http.createServer(async (req, res) => {
 
     try {
       const students = await countStudents(arg);
-      res.end(`${students.join('\n')}`);
+      res.end(students);
+      // res.end(`${students.join('\n')}`);
     } catch (error) {
       res.end(error.message);
     }

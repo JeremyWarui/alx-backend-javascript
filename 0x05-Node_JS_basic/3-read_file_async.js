@@ -7,7 +7,7 @@ function countStudents(path) {
       if (err) {
         reject(new Error('Cannot load the database'));
       } else {
-        const content = data.split('\n');
+        const content = data.toString().split('\n');
         const students = content.filter((item) => item).map((item) => item.split(','));
 
         const NUMBER_OF_STUDENTS = students.length ? students.length - 1 : 0;
