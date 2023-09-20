@@ -11,7 +11,8 @@ describe('calculateNumber', () => {
    });
 
   it('should round floats', () => {
-    assert.strictEqual(calculateNumber(2.3, 3.4), 6);
-    assert.strictEqual(calculateNumber(1.2, 3.2), 4);
+    assert.strictEqual(calculateNumber(2, 3.8), 6);
+    assert.strictEqual(calculateNumber(1.2, 3), 4);
+    assert.strictEqual(calculateNumber(4.2, 5.3), 9);
   });
 });
