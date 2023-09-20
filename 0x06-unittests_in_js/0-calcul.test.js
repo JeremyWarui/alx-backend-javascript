@@ -10,9 +10,14 @@ describe('calculateNumber', () => {
     assert.equal(calculateNumber(-1, -3), -4);
    });
 
-  it('should round floats', () => {
-    assert.strictEqual(calculateNumber(2, 3.8), 6);
+  it('should round first number', () => {
+    assert.strictEqual(calculateNumber(2.2, 3), 5);
     assert.strictEqual(calculateNumber(1.2, 3), 4);
-    assert.strictEqual(calculateNumber(4.2, 5.3), 9);
+    assert.strictEqual(calculateNumber(4.2, 5), 9);
+  });
+  it('should round second number', () => {
+    assert.equal(calculateNumber(2, 3.5), 6);
+    assert.equal(calculateNumber(1, 3.4), 4);
+    assert.equal(calculateNumber(1.7, 0), 2);
   });
 });
