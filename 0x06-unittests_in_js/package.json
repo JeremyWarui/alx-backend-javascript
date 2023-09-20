@@ -4,11 +4,11 @@
   "description": "Unit testing using JS",
   "main": "0-calcul.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha.js"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "^8.2.1"
   }
 }
