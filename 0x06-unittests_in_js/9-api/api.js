@@ -7,7 +7,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/card/:id([0-9]+)', (request, response) => {
-  const { id } = request.params;
+  const id = request.params.id;
   response.send(`Payment methods for cart ${id}`);
 });
 
