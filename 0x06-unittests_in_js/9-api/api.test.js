@@ -15,15 +15,12 @@ describe('index page', () => {
   });
 });
 
-describe('/cart/:id', () => {
-  it('should response with 200 and id 12 in message', (done) => {
-    const call = {
-      url: 'http://localhost:7865/cart/12',
-      method: 'GET',
-    };
-    request(call, (error, res, body) => {
+describe('index page', () => {
+  const endpoint = 'http://localhost:7865/cart/124';
+  it('should response with 200 and id 124 in message', (done) => {
+    request(endpoint, (error, res, body) => {
       expect(res.statusCode).to.equal(200);
-      expect(body).to.equal('Payment methods for cart 12');
+      expect(body).to.equal('Payment methods for cart 124');
       done();
     });
   });
