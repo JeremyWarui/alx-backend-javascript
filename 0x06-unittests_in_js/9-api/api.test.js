@@ -23,7 +23,7 @@ describe('/cart/12', () => {
     };
     request(call, (error, res, body) => {
       expect(res.statusCode).to.equal(200);
-      expect(res.body).to.equal('Payment methods for cart 12');
+      expect(body).to.equal('Payment methods for cart 12');
       done();
     });
   });
