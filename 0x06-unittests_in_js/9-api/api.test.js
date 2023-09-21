@@ -15,7 +15,7 @@ describe('index page', () => {
   });
 });
 
-describe('/cart/12', () => {
+describe('/cart/:id', () => {
   it('should response with 200 and id 12 in message', (done) => {
     const call = {
       url: 'http://localhost:7865/cart/12',
@@ -29,10 +29,10 @@ describe('/cart/12', () => {
   });
 });
 
-describe('/cart/ab2', () => {
+describe('/cart/:isNaN', () => {
   it('should response with 404', (done) => {
     const call = {
-      url: 'http://localhost:7865/cart/ab2',
+      url: 'http://localhost:7865/cart/abr',
       method: 'GET',
     };
     request(call, (error, res, body) => {
