@@ -45,8 +45,13 @@ describe('Integration testing', () => {
     it('should respond with an object', (done) => {
       request(endpoint, (error, res, body) => {
         expect(res.statusCode).to.equal(200);
-	expect(body).to.equal(
-          '{"payment_methods":{"credit_cards":true,"paypal":false}}'
+	expect(JSON.parse(body)).to.equal(
+          {
+	    payment_methods: {
+	      credit_cards: true,
+              paypal: false,
+	    }
+	  }
 	);
 	done();
       });
