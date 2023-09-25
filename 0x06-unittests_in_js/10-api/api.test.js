@@ -54,17 +54,19 @@ describe('Integration testing', () => {
   });
 
   describe('POST /login', () => {
-    const end_pnt = {
-      url: 'http://localhost:7865/login',
-      method: 'POST',
-      json: {
-	userName: 'Jeremy',
-      },
-    };
-    request(end_pnt, (error, res, body) => {
-      expect(res.statusCode).to.equal(200);
-      expect(body).to.equal('Welcome Jeremy');
-      done();
+    it('should display a welcome message', (done) => {
+      const end_pnt = {
+        url: 'http://localhost:7865/login',
+        method: 'POST',
+        json: {
+	  userName: 'Jeremy',
+        },
+      };
+      request(end_pnt, (error, res, body) => {
+        expect(res.statusCode).to.equal(200);
+        expect(body).to.equal('Welcome Jeremy');
+        done();
+      });
     });
   });
 });
