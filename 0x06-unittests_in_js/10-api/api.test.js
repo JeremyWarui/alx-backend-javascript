@@ -67,7 +67,7 @@ describe('Integration testing', () => {
 	  userName: 'Jeremy',
         },
       };
-      request(end_pnt, (error, res, body) => {
+      request.post(end_pnt, (error, res, body) => {
         expect(res.statusCode).to.equal(200);
         expect(body).to.equal('Welcome Jeremy');
         done();
