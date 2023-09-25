@@ -43,16 +43,14 @@ describe('Integration testing', () => {
   describe(' /available_payments route', () => {
     const end_pnt = 'http://localhost:7865/available_payments';
     it('should respond with an object', (done) => {
-      request(endpoint, (error, res, body) => {
+      request(end_pnt, (error, res, body) => {
         expect(res.statusCode).to.equal(200);
-	expect(JSON.parse(body)).to.equal(
-          {
-	    payment_methods: {
-	      credit_cards: true,
-              paypal: false,
-	    }
+	expect(JSON.parse(body)).to.deep.equal({
+	  payment_methods: {
+	    credit_cards: true,
+	    paypal: false
 	  }
-	);
+	});
 	done();
       });
     });
