@@ -12,7 +12,7 @@ const countStudents = (path) => {
 
   let students = studentData.filter((student) => student);
   students = students.map((student) => student.split(',')).slice(1);
-  // console.log(students);
+  console.log(students);
   const fields = {};
 
   const NUMBER_OF_STUDENTS = students.length;
@@ -20,9 +20,11 @@ const countStudents = (path) => {
   console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
 
   for (const student of students) {
-    const field = student[3];
-    if (!fields[field]) fields[field] = [];
-    fields[field].push(student[0]);
+    if (student[3]) {
+      const field = student[3];
+      if (!fields[field]) fields[field] = [];
+      fields[field].push(student[0]);
+    }
   }
 
   Object.entries(fields).forEach(([field, list]) => {
