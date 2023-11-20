@@ -2,6 +2,7 @@ const fs = require('fs');
 
 const countStudents = (path) => {
   let data;
+
   try {
     data = fs.readFileSync(path, 'utf8');
   } catch (err) {
@@ -14,7 +15,7 @@ const countStudents = (path) => {
   // console.log(students);
   const fields = {};
 
-  const NUMBER_OF_STUDENTS = students.length ? students.length : 0;
+  const NUMBER_OF_STUDENTS = students.length;
 
   console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
 
