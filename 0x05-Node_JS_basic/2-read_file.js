@@ -2,15 +2,12 @@ const fs = require('fs');
 
 const countStudents = (path) => {
   try {
-    const data = fs.readFileSync(path, "utf8");
+    const data = fs.readFileSync(path, 'utf8');
     const studentData = data.toString().split('\n');
-    const noOfStudents = (studentData.length - 1);
-    console.log(`Number of students: ${noOfStudents}`);
 
     let students = studentData.filter((student) => student);
     students = students.map((student) => student.split(','));
 
-    console.log(students.length);
     const fields = {};
 
     const getStudentsByField = (students, field) => {
@@ -18,6 +15,11 @@ const countStudents = (path) => {
       studentField = studentField.map((student) => student[0]);
       return studentField;
     };
+
+    const studentsSWE = getStudentsByField(students, 'SWE');
+    const studentsCS = getStudentsByField(students, 'CS');
+    const noOfStudents = [...studentsSWE, ...studentsCS].length;
+    console.log(`Number of students: ${noOfStudents}`);
 
     const setFields = (fieldsObj, [...fields], students) => {
       const newObj = { ...fieldsObj };
