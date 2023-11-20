@@ -15,10 +15,6 @@ const countStudents = (path) => {
   // console.log(students);
   const fields = {};
 
-  const NUMBER_OF_STUDENTS = students.length;
-
-  console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
-
   for (const student of students) {
     if (student[3]) {
       const field = student[3];
@@ -26,6 +22,9 @@ const countStudents = (path) => {
       fields[field].push(student[0]);
     }
   }
+
+  const NUMBER_OF_STUDENTS = Object.values(fields).reduce((acc, cur) => acc + cur.length, 0);
+  console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
 
   Object.entries(fields).forEach(([field, list]) => {
     if (field && list) {
