@@ -6,31 +6,23 @@ const countStudents = (path) => {
     const studentData = data.toString().split('\n');
 
     let students = studentData.filter((student) => student);
-    students = students.map((student) => student.split(','));
-
+    students = students.map((student) => student.split(',')).slice(1);
+    // console.log(students);
     const fields = {};
 
-    const getStudentsByField = (students, field) => {
-      let studentField = students.filter((student) => (student[student.length - 1] === field));
-      studentField = studentField.map((student) => student[0]);
-      return studentField;
-    };
+    const NUMBER_OF_STUDENTS = students.length ? students.length : 0;
 
-    const studentsSWE = getStudentsByField(students, 'SWE');
-    const studentsCS = getStudentsByField(students, 'CS');
-    const noOfStudents = [...studentsSWE, ...studentsCS].length;
-    console.log(`Number of students: ${noOfStudents}`);
+    console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
 
-    const setFields = (fieldsObj, [...fields], students) => {
-      const newObj = { ...fieldsObj };
-      for (const field of fields) {
-        newObj[field] = getStudentsByField(students, field);
-        console.log(`Number of students in ${field}: ${newObj[field].length}. List: ${newObj[field].join(', ')}`);
-      }
-      return newObj;
-    };
+    for (const student of students) {
+      const field = student[3];
+      if (!fields[field]) fields[field] = [];
+      fields[field].push(student[0]);
+    }
 
-    setFields(fields, ['CS', 'SWE'], students);
+    Object.entries(fields).forEach(([field, list]) => {
+      console.log(`Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`);
+    });
   } catch (err) {
     throw new Error('Cannot load database');
   }
