@@ -12,7 +12,7 @@ const countStudents = (path) => {
 
   let students = studentData.filter((student) => student);
   students = students.map((student) => student.split(',')).slice(1);
-  // console.log(students);
+  console.log(students);
   const fields = {};
 
   const NUMBER_OF_STUDENTS = students.length;
