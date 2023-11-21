@@ -15,7 +15,7 @@ class StudentsController {
         }
         response.status(200).status(`${students.join('\n')}`);
       })
-      .catch(() => response.send(500, 'Cannot load the database'));
+      .catch(() => response.status(500).send('Cannot load the database'));
   }
 
   static getAllStudentsByMajor(request, response, DB) {
