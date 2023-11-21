@@ -12,7 +12,7 @@ app.get('/students', async (req, res) => {
     const students = await countStudents(process.argv[2]);
     res.send(`${title}${students.join('\n')}`);
   } catch (error) {
-    res.send(error.message);
+    res.send(`${title}${error.message}`);
   }
 });
 
