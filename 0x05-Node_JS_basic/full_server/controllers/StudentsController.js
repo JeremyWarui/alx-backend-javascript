@@ -29,7 +29,7 @@ class StudentsController {
         response.status(200).send(`List: ${students.join(', ')}`);
       }).catch(() => response.status(500).send('Cannot load the database'));
     }
-    response.status(200);
+    //response.status(200);
   }
 }
 
