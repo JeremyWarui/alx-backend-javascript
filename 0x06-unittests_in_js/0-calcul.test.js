@@ -1,5 +1,5 @@
 const assert = require('assert');
-const calculateNumber = require('./0-calcul');
+const calculateNumber = require('./0-calcul.js');
 
 describe('calculateNumber function', () => {
   it('should return sum of two integers', () => {
@@ -17,6 +17,16 @@ describe('calculateNumber function', () => {
     assert.equal(calculateNumber(3.2, 2), 5);
     assert.equal(calculateNumber(3.5, 3), 7);
   });
+
+  it('should return sum of negative numbers', () => {
+    assert.equal(calculateNumber(-1, 1), 0);
+    assert.equal(calculateNumber(-1, -1), -2);
+  })
+
+  it('should check arguments', () => {
+    assert.strictEqual(isNaN(calculateNumber(1)), true);
+    assert.strictEqual(isNaN(calculateNumber()), true);
+  })
 
   it('should cast non-numbers to numbers and return sum', () => {
     assert.equal(calculateNumber('3', 1), 4);
