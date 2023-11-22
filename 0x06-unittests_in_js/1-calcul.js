@@ -1,17 +1,15 @@
 const calculateNumber = (type, a, b) => {
-  const fNum = Number(a);
-  const sNum = Number(b);
   if (type === 'SUM') {
-    return Math.round(fNum) + Math.round(sNum);
+    return Math.round(a) + Math.round(b);
   }
   if (type === 'SUBTRACT') {
-    return Math.round(fNum) - Math.round(sNum);
+    return Math.round(a) - Math.round(b);
   }
   if (type === 'DIVIDE') {
-    if (Math.round(sNum) === 0) {
+    if (Math.round(b) === 0) {
       return 'Error';
     }
-    return Math.round(fNum) / Math.round(sNum);
+    return Math.round(a) / Math.round(b);
   }
 };
 

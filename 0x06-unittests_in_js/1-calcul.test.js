@@ -1,5 +1,5 @@
 const assert = require('assert');
-const calculateNumber = require('./1-calcul');
+const calculateNumber = require('./1-calcul.js');
 
 describe('calculateNumber function with type SUM', () => {
   it('should return sum of two integers', () => {
