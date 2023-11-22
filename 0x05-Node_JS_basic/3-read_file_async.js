@@ -10,12 +10,12 @@ function countStudents(path) {
           .map((student) => student.split(','));
         students.shift();
         const noOfStudents = students.length ? students.length : 0;
-        
-	const logMessages = [];
-	let msg = `Number of students: ${noOfStudents}`;
-	logMessages.push(msg);
-	console.log(`Number of students: ${noOfStudents}`);
-	
+
+        const logMessages = [];
+        let msg = `Number of students: ${noOfStudents}`;
+        logMessages.push(msg);
+        console.log(`Number of students: ${noOfStudents}`);
+
         const fields = {};
 
         for (const student of students) {
@@ -26,8 +26,8 @@ function countStudents(path) {
 
         for (const [field, students] of Object.entries(fields)) {
           console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
-	  msg = `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
-	  logMessages.push(msg);
+          msg = `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`;
+          logMessages.push(msg);
         }
 
         resolve(logMessages);
